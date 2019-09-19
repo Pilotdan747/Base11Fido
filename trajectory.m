@@ -53,7 +53,7 @@ close all
 g = 9.81; %m/s^2 
 
 %Atmosphere model
-[Z, Z_L, Z_U, T, P, rho, c, g1, mu, nu, k, n, n_sum] = atmo(500, 0.01, 1);
+[Z, Z_L, Z_U, T, P, rho, c, g1, mu, nu, k, n, n_sum] = atmo(200, 0.01, 1);
 rho1 = rho';
 P1 = P';
 c1 = c';
@@ -68,13 +68,13 @@ ISP = 230;
 mdot = 5.0;
 dryMass = 250;       %CHECK THIS
 dExhaust = 0.14783;
+exitArea = dExhaust^2/4*pi;   %m^2
+ue = ISP*g;     
 pExhaust = 1e5;
 
 %IFactor = 1;
 
-A = dBody^2/4*pi;
-exitArea = dExhaust^2/4*pi;   %m^2
-ue = ISP*g;                   %Exhaust Velocity
+A = dBody^2/4*pi;              %Exhaust Velocity
 propMass = ILimit/ue;
 mass = propMass + dryMass;
 burnTime = propMass/mdot;
